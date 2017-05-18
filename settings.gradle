@@ -1,0 +1,5 @@
+include 'spring-studio-webapp'
+include 'spring-studio-core'
+include 'spring-studio-manager'
+include 'spring-studio-admin-manager'
+
