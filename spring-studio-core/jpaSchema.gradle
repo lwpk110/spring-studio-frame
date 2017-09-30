@@ -22,7 +22,7 @@ sourceSets {
 
 generateSchema {
     scriptAction = 'drop-and-create'
-    namingStrategy = 'cn.tendata.mdcs.data.jpa.config.CustomNamingStrategy'
+    namingStrategy = 'cn.spring.studio.data.jpa.config.CustomNamingStrategy'
     format = true
     
     targets {

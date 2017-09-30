@@ -11,5 +11,8 @@ repositories {
 }
 
 dependencies {
+
+    compile project(':spring-studio-core')
+
     testCompile group: 'junit', name: 'junit', version: '4.11'
 }

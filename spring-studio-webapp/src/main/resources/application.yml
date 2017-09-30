@@ -1,0 +1,54 @@
+server:
+  port: 8085
+
+logging:
+  path: logs/
+  level:
+    root: INFO
+
+spring:
+  profiles.active: mysql,dev
+  messages:
+    basename: cn/tendata/mdcs/messages,cn/tendata/mdcs/web/messages,i18n/admin/ValidationMessages
+  jpa:
+    open-in-view: true
+    show-sql: true
+    properties:
+      jadira.usertype.autoRegisterUserTypes: true
+    hibernate:
+      naming:
+        implicit-strategy: cn.spring.studio.data.jpa.config.CustomNamingStrategy
+      ddl-auto: update
+  thymeleaf:
+      enabled: true
+      cache: false
+      mode: LEGACYHTML5
+
+security:
+  ignored: /favicon.ico,css/**,/js/**,/fonts/**,/img/**,/webjars/**,/admin/app/**,/admin/assets/**,/admin/css/**,/admin/html/**,/admin/images/**
+
+multipart:
+  enabled: true
+  max-file-size: 1Mb
+  max-request-size: 10Mb
+
+---
+spring:
+  profiles: mysql
+  datasource:
+    driver-class-name: ${datasource.driver-class-name:com.mysql.jdbc.Driver}
+    url: ${datasource.url:jdbc:mysql://192.168.1.111:3306/spring_studio?useUnicode=true&characterEncoding=utf-8&useSSL=false}
+    username: ${datasource.username:root}
+    password: ${datasource.password:}
+    test-while-idle: true
+    test-on-borrow: true
+    validation-query: SELECT 1
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+    hibernate:
+      ddl-auto: update
+#flyway:
+#  locations: classpath:db/migration/mysql
+
+
+

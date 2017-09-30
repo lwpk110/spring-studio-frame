@@ -1,5 +1,6 @@
 package cn.spring.studio.webapp;
 
+import cn.spring.studio.service.EntityService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
@@ -7,6 +8,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -29,14 +31,14 @@ public class Application extends SpringBootServletInitializer {
 
     @Configuration
     @EnableTransactionManagement
-    @EnableJpaRepositories(basePackages = "cn.tendata.mdcs.data.repository")
+    @EnableJpaRepositories(basePackages = "cn.spring.studio.data.repository")
     @EnableJpaAuditing
-    @EntityScan(basePackages = "cn.tendata.mdcs.data.domain")
+    @EntityScan(basePackages = "cn.spring.studio.data.domain")
     static class JpaConfig {
     }
 
     @Configuration
-    //@ComponentScan(basePackageClasses = {EntityService.class})
+    @ComponentScan(basePackageClasses = {EntityService.class})
     static class ServiceConfig {
     }
 

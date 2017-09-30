@@ -1,34 +1,22 @@
 package cn.spring.studio.data.jpa.config;
 
-import org.hibernate.cfg.ImprovedNamingStrategy;
+import org.hibernate.boot.model.naming.EntityNaming;
+import org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl;
 
 @SuppressWarnings("serial")
-public class CustomNamingStrategy extends ImprovedNamingStrategy {
+public class CustomNamingStrategy extends ImplicitNamingStrategyJpaCompliantImpl {
 
-	private static final String PLURAL_SUFFIX = "s";
-	
-//	public String tableName(String tableName) {
-//        return tableName;
-//    }
-	
-	public String columnName(String columnName) {
-        return columnName;
-    }
-	
-	/**
-     * Transforms class names to table names by using the described naming conventions.
-     * @param className
-     * @return  The constructed table name.
-     */
+    private static final String PLURAL_SUFFIX = "s";
+
     @Override
-    public String classToTableName(String className) {
-        String tableNameInSingularForm = super.classToTableName(className);
+    protected String transformEntityName(EntityNaming entityNaming) {
+        String tableNameInSingularForm = super.transformEntityName(entityNaming);
         return transformToPluralForm(tableNameInSingularForm);
     }
- 
+
     private String transformToPluralForm(String tableNameInSingularForm) {
         StringBuilder pluralForm = new StringBuilder();
- 
+
         pluralForm.append(tableNameInSingularForm);
         if(!tableNameInSingularForm.endsWith(PLURAL_SUFFIX)){
             pluralForm.append(PLURAL_SUFFIX);

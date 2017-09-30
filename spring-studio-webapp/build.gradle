@@ -18,17 +18,24 @@ springBoot {
 description = 'webapp'
 
 dependencies {
+
+    compile project(':spring-studio-core')
+    compile project(':spring-studio-admin-manager')
+    compile project(':spring-studio-manager')
+
     compile "org.springframework.boot:spring-boot-starter-web"
     compile 'org.springframework.boot:spring-boot-starter-data-jpa'
     compile "org.springframework.boot:spring-boot-configuration-processor"
     compile "mysql:mysql-connector-java"
-    compile 'org.flywaydb:flyway-core'
+    //compile 'org.flywaydb:flyway-core'
     compile "javax.activation:activation"
     compile "org.thymeleaf:thymeleaf"
     compile "org.thymeleaf:thymeleaf-spring4"
     compile "nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect"
     compile "org.thymeleaf.extras:thymeleaf-extras-springsecurity4"
     compile "net.sourceforge.nekohtml:nekohtml:${nekohtmlVersion}"
+    compile "org.springframework.boot:spring-boot-devtools"
+
 
 
     testCompile "org.springframework.boot:spring-boot-starter-test"
